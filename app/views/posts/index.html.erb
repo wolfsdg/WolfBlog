@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Posts</h1>
+</div>
+
+<%= link_to 'Create Post', new_post_path, class: "btn btn-primary" %>
+
+<% @posts.each do |post| %>
+<div class="status">
+  <strong><%= post.title %></strong>
+    <p><%= post.content %></p>
+    <div class="meta">
+      <%= link_to time_ago_in_words(post.created_at) + " ago ", post %></td>
+    </div>
+</div>
+<% end %> 
+
+<%= link_to 'Back', posts_path, class: "btn btn-primary" %>
