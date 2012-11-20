@@ -1,11 +1,10 @@
 Blog::Application.routes.draw do
   devise_for :users
 
-  get "comment/show"
+  resources :posts do 
+    resources :comments
+  end 
 
-  get "comment/new"
-
-  resources :posts
   root :to => "posts#index"
 
   # The priority is based upon order of creation:

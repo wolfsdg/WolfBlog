@@ -1,0 +1,17 @@
+
+  <%= simple_form_for([@post,@post.comments.build], html: {class: "form-horizontal"}) do |f| %>
+    <% if @post.errors.any? %>
+      <% %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= f.hidden_field :alias, :value => current_user.profile_name %>
+    <% else %>
+      <%= f.input :alias %>
+    <% end %> 
+      <%= f.input :message %>
+      
+    <div class="form-actions">
+      <%= f.button :submit, "Publish Post", class: "btn btn-primary" %>
+    </div>
+  <% end %>
