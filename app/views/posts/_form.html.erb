@@ -1,21 +1,23 @@
-<%= simple_form_for(@post, html: {class: "form-horizontal"}) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% if user_signed_in? %>
+  <%= simple_form_for(@post, html: {class: "form-horizontal"}) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+      
+    <div class="form-actions">
+      <%= f.button :submit %>
     </div>
   <% end %>
-
-  <%= f.input :user_id, collection: User.all, label_method: :full_name %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-    
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+<% end %> 

@@ -6,8 +6,8 @@
 development:
   adapter: postgresql
   database: Blog_db_development
-  #username: postgres
-  #password: principelobo123
+  username: postgres
+  password: principelobo123
   pool: 5
   timeout: 5000
 
@@ -17,8 +17,8 @@ development:
 test:
   adapter: postgresql
   database: Blog_db_test
-  #username: postgres
-  #password: principelobo123
+  username: postgres
+  password: principelobo123
   pool: 5
   timeout: 5000
 

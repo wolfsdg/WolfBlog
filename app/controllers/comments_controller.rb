@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
+
   def show
     @comments = Comment.all
 
     respond_to do |format|
-      format.html 
+      format.html # show.html.erb
       format.json { render json: @comments }
     end
-  end
+  end 
 
   def new
     @comment = Comment.new
