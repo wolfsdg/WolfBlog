@@ -5,9 +5,47 @@
 </p>
 
 <p>
-  <%= @post.content %>
+  <%= markdown @post.content %>
 </p>
+<div>
+    <div id='fb-root'></div>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <p><a onclick='postToFeed(); return false;'>Post in Facebook</a></p>
+    <p id='msg'></p>
 
+    <script> 
+      FB.init({appId: "396253220452889", status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          redirect_uri: "<%= post_url(@post) %>",
+          link: '<%= post_url(@post) %>' ,
+          picture: 'http://bestclipartblog.com/clipart-pics/wolf-clipart-4.jpg',
+          name: "<%= @post.title %>",
+          caption: "<%= @post.content %>",
+          description: 'post by <%= @post.user.full_name %>'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+    </script>
+
+    <div class='spread'>
+      <div class='twshare left'>
+        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-text="<%= @post.title %> | post by <%= @post.user.full_name %> |" data-url="<%= @post_url%>" data-related="anywhereTheJavascriptAPI" >Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+
+    </div>
+</div>
 <%= render @post.comments.order("created_at DESC") %>
 
 <%= render 'comments/form' %>

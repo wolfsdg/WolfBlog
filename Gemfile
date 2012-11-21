@@ -8,6 +8,10 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem 'devise'
 gem 'simple_form'
+gem 'redcarpet'
+gem 'pygments.rb'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 # Gems used only for assets and not required
