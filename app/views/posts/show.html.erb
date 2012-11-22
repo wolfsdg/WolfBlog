@@ -7,6 +7,11 @@
 <p>
   <%= markdown @post.content %>
 </p>
+<p>
+  <% if user_signed_in? && (current_user == @post.user) %>
+    <%= link_to 'Edit Post', edit_post_path(@post), class: "btn btn-primary" %>
+  <% end %>
+</p>
 <div>
     <div id='fb-root'></div>
     <script src='http://connect.facebook.net/en_US/all.js'></script>
@@ -46,6 +51,7 @@
 
     </div>
 </div>
+
 <%= render @post.comments.order("created_at DESC") %>
 
 <%= render 'comments/form' %>

@@ -5,9 +5,9 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= f.hidden_field :alias, :value => current_user.profile_name %>
+      <%= f.hidden_field :alias, :value => current_user.full_name %>
     <% else %>
-      <%= f.input :alias %>
+      <%= f.hidden_field :alias, :value => "anonymous" %>
     <% end %> 
       <%= f.input :message %>
       
