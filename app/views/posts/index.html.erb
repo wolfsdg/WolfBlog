@@ -13,8 +13,8 @@
       <%= "Por " + post.user.full_name %> | <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S")  %>
       <span class = "admin">
         <% if current_user == post.user %>
-        | <%= link_to 'Edit', edit_post_path(post) %></td> 
-        | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure Delete this status?' } %>
+        | <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning btn-small" %></td> 
+        | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure Delete this status?' }, class: "btn btn-danger btn-small" %>
         <% end %>
       </span>
     </div>

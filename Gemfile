@@ -12,7 +12,7 @@ gem 'redcarpet'
 gem 'pygments.rb'
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem "paperclip", "~> 3.0"
 
 # Gems used only for assets and not required
 # in production environments by default.

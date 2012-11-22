@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b><%= @post.title %></b>
+  <b><h3><%= @post.title %></h3></b>
 </p>
 
 <p>
   <%= markdown @post.content %>
 </p>
 <p>
+  <h5>by <%= @post.user.full_name %></h5>
+</p>
+<p>
   <% if user_signed_in? && (current_user == @post.user) %>
-    <%= link_to 'Edit Post', edit_post_path(@post), class: "btn btn-primary" %>
+    <%= link_to 'Edit Post', edit_post_path(@post), class: "btn btn-warning btn-small" %>
   <% end %>
 </p>
 <div>
@@ -30,7 +33,7 @@
           link: '<%= post_url(@post) %>' ,
           picture: 'http://bestclipartblog.com/clipart-pics/wolf-clipart-4.jpg',
           name: "<%= @post.title %>",
-          caption: "<%= @post.content %>",
+          caption: '<%= @post.content.lines.first.chomp %>',
           description: 'post by <%= @post.user.full_name %>'
         };
 
