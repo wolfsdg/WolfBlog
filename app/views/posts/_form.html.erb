@@ -16,6 +16,9 @@
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.input :title %>
+    <div class="field">
+      <%= f.input :picture, as: :file %>
+    </div>
     <%= f.input :content %>
       
     <div class="form-actions">

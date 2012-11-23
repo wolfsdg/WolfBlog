@@ -7,9 +7,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :email, :password, 
-                  :password_confirmation, :remember_me, :provider, :uid, :avatar
-                  
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+                  :password_confirmation, :remember_me, :provider, :uid
+                
   # attr_accessible :title, :body
 
   has_many :posts

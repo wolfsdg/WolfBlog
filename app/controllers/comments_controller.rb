@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       if @comment.save
         UserMailer.confirm_comment_post(@comment).deliver
         format.html { redirect_to @post, notice: 'Status was successfully created.' }
-        format.json { render json: @post, comment: :created, location: @post }
+        format.js 
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, comment: :unprocessable_entity }
