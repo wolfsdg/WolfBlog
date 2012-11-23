@@ -6,6 +6,8 @@ Blog::Application.routes.draw do
     resources :comments
   end 
 
+  resources :likes 
+
   root :to => "posts#index"
 
   # The priority is based upon order of creation:

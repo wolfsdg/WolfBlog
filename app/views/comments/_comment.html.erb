@@ -1,7 +1,9 @@
 
 <div id="comment">
-  <strong><%= "Por " + comment.alias %></strong>| <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S")  %>
+  <strong><%= comment.alias %></strong> Said
   <div class="meta">
-    <%= comment.message %>
+    <%= comment.message %> 
+    <div id="like"><%= link_to 'Like', @comment , class: "btn btn-primary btn-small" %></div>
   </div>
+  <%=comment.created_at.strftime("%Y-%m-%d %H:%M:%S")%>
 </div>
