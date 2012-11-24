@@ -1,11 +1,10 @@
 class LikesController < ApplicationController
 
-  def create 
-    @user = current_user
+  def new 
     @comment = Comment.find(params[:comment_id])
     @like = Like.new
     @like.comment = @comment
-    @like.user = @user
+    @like.user = current_user
     @like.save 
 
     respond_to do |format|
@@ -14,12 +13,12 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Post.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
+    @like = Like.find(params[:id])
     @like.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 

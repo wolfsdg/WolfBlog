@@ -1,9 +1,19 @@
-
+<% like = comment.likes.where(user_id: current_user.id).first %>
 <div id="comment">
   <strong><%= comment.alias %></strong> Said
-  <div class="meta">
-    <%= comment.message %> 
-    <div id="like"><%= link_to 'Like', @comment , class: "btn btn-primary btn-small" %></div>
+  <div>
+      <%= comment.message %>
+  <div id="meta<%=comment.id%>">
+    <% if user_signed_in? %>
+      <% if like.nil?%>
+        <%= link_to 'Like', new_comment_like_path(comment), remote: true, class: "btn btn-primary btn-small" %> | 
+      <% else %>
+        <%= link_to 'Unlike', comment_like_path(comment, like),method: :delete, remote: true, class: "btn btn-small" %> | 
+      <% end %>
+      
+    <% end %>
+    </div>
+    <div id="count<%=comment.id%>"><%= comment.likes.count %></div>
   </div>
   <%=comment.created_at.strftime("%Y-%m-%d %H:%M:%S")%>
 </div>

@@ -1,0 +1,3 @@
+<%count = @comment.likes.count %>
+$('#meta<%=@comment.id%>').html('<%= link_to "Like", new_comment_like_path(@comment), remote: true, class: "btn btn-primary btn-small" %> |');
+$('#count<%=@comment.id%>').html('<%= count %>');

@@ -1,0 +1,3 @@
+
+$('#meta<%=@comment.id%>').html('<%= link_to "Unlike", comment_like_path(@comment, @like),method: :delete, remote: true, class: "btn btn-small" %> |');
+$('#count<%=@comment.id%>').html('<%= @comment.likes.count %>');

@@ -4,9 +4,11 @@ Blog::Application.routes.draw do
 
   resources :posts do 
     resources :comments
-  end 
+  end
 
-  resources :likes 
+  resources :comments do 
+    resources :likes
+  end
 
   root :to => "posts#index"
 
